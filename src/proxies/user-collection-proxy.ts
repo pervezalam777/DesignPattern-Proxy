@@ -14,6 +14,7 @@ export class UserCollectionProxy implements IUserCollection {
         if(results === null){
             let userColl:UserCollection = new UserCollection();
             results = userColl.getUserByFirstName(keyword);
+            this.cacheFNameSearchResults[keyword] = results;
         }
         return <Array<IBasicUserModel>>results;
     }
@@ -23,6 +24,7 @@ export class UserCollectionProxy implements IUserCollection {
         if(results === null){
             let userColl:UserCollection = new UserCollection();
             results = userColl.getUserByLastName(keyword);
+            this.cacheLNameSearchResults[keyword] = results;
         }
         return <Array<IBasicUserModel>>results;
     }
